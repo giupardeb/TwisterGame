@@ -1,4 +1,3 @@
-TwisterGame
+AndroidTwisterGame
 ===========
-
-The Classical Game of Twister!
+Il classico gioco del Twister, per Android!!!
