@@ -7,5 +7,6 @@
     <string name="nGiocatori">Numero Giocatori</string>
     <string name="title_activity_insert_players">InsertPlayersActivity</string>
     <color name="red">#255</color>
+    <string name="Empty">Attenzione, hai lasciato un Campo vuoto!</string>
 
 </resources>
