@@ -29,17 +29,18 @@ public class InsertPlayersActivity extends Activity {
 		LinearLayout ll = (LinearLayout)findViewById(R.id.linearlayout);
 		for(int i=0; i<players;i++){
 			txt[i] = new EditText(this);
+			txt[i].setHint("Inserisci il nome del Giocatore");
+			txt[i].setSingleLine(); //la edit text avrà una singola linea, disattivando il tasto enter che può creare stringhe vuote non gestibili
 			ll.addView(txt[i]);
-			txt[i].setText("Nome");
 		}
 
 		gioca = (Button)findViewById(R.id.btnGioca);
-
+		
 		gioca.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// ERRORE..NON RICHIAMA IL METODO SOTTOSTANTE 
+				
 				if(CheckEmptyEditText(txt,players)){
 					//fai apparire un toast che dice che c'è un edit text vuoto
 					Toast toastExample;
@@ -48,11 +49,16 @@ public class InsertPlayersActivity extends Activity {
 				}
 				else{
 					// apri activity di gioco..oltre a creare oggetti giocatori e inserirli nel DB
+					
+					Toast toastExample;
+					toastExample = Toast.makeText(getApplicationContext(),getResources().getString(R.string.hello_world), Toast.LENGTH_LONG);
+					toastExample.show();
 				}
 			}
 
 
 		});
+
 	}
 
 	@Override
@@ -61,16 +67,15 @@ public class InsertPlayersActivity extends Activity {
 		getMenuInflater().inflate(R.menu.insert_players, menu);
 		return true;
 	}
-
+	
 	//Tale metodo è essenziale per controllare se tutte le Edittext sono riempite con il nome
 	private boolean CheckEmptyEditText(EditText[] txt,int players) {
 		boolean vuoto = false;
 		
 		for(int i=0; i<players && vuoto == false;i++)
-			if(txt[i].getText().equals(""))
+			if(txt[i].getText().toString().equals("")) //devi mettere il tostring per convertire ciò che l'utente ha inserito
 				vuoto = true;
 
 		return vuoto;
 	}
-
 }

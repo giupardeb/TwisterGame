@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private int players = 0;
@@ -39,13 +40,20 @@ public class MainActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						players = Integer.parseInt(input.getText().toString()); //acquisisco il dato inserito dall'utente
+						if(players<=6){
+							Intent i = new Intent(MainActivity.this, InsertPlayersActivity.class); //creo il ponte per aprire l'altra activity
+							String pkg = getPackageName();//per rendere univoci i nomi delle chiavi passate
+							//è consigliato (la doc dice 'must') aggiungere il nome del nostro package davanti al nome
 
-						Intent i = new Intent(MainActivity.this, InsertPlayersActivity.class); //creo il ponte per aprire l'altra activity
-						String pkg = getPackageName();//per rendere univoci i nomi delle chiavi passate
-						//è consigliato (la doc dice 'must') aggiungere il nome del nostro package davanti al nome
+							i.putExtra(pkg+".myInt", players); //inseriamo i dati nell'intent da passare
+							startActivity(i);
+						}
+						else{
+							Toast toastExample;
+							toastExample = Toast.makeText(getApplicationContext(),getResources().getString(R.string.MaxPlayers), Toast.LENGTH_LONG);
+							toastExample.show();
+						}
 
-						i.putExtra(pkg+".myInt", players); //inseriamo i dati nell'intent da passare
-						startActivity(i);
 					}
 
 				});
