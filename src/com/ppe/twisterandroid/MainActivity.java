@@ -16,11 +16,36 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private int players = 0;
 	private Button SceltaGiocatori;
+	private Button classifica;
+	private MyDatabase db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		db = new MyDatabase(getApplicationContext());
 
+		
+		classifica = (Button)findViewById(R.id.btnClassifica);
+		classifica.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Intent i = new Intent(MainActivity.this, ActivityClassifica.class);
+				String pkg = getPackageName();//per rendere univoci i nomi delle chiavi passate
+				//è consigliato (la doc dice 'must') aggiungere il nome del nostro package davanti al nome
+				i.putExtra(pkg+".myDb", db); //inseriamo i dati nell'intent da passare
+				
+				startActivity(i);
+			}
+			
+		});
+		
+		
+		
+		
 		SceltaGiocatori = (Button)findViewById(R.id.buttonGiocatori);
 		SceltaGiocatori.setOnClickListener(new OnClickListener(){
 			@Override
@@ -44,7 +69,7 @@ public class MainActivity extends Activity {
 							Intent i = new Intent(MainActivity.this, InsertPlayersActivity.class); //creo il ponte per aprire l'altra activity
 							String pkg = getPackageName();//per rendere univoci i nomi delle chiavi passate
 							//è consigliato (la doc dice 'must') aggiungere il nome del nostro package davanti al nome
-
+							i.putExtra(pkg+".myDb", db);
 							i.putExtra(pkg+".myInt", players); //inseriamo i dati nell'intent da passare
 							startActivity(i);
 						}

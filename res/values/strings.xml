@@ -9,5 +9,7 @@
     <color name="red">#255</color>
     <string name="Empty">Attenzione, hai lasciato più campi vuoti!</string>
     <string name="MaxPlayers">Hai inserito più di 6 giocatori</string>
+    <string name="title_activity_activity_classifica">ActivityClassifica</string>
+    <string name="DbEmpty">Il Database è vuoto</string>
 
 </resources>

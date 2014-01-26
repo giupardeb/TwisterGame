@@ -26,6 +26,10 @@
             android:name="com.ppe.twisterandroid.InsertPlayersActivity"
             android:label="@string/title_activity_insert_players" >
         </activity>
+        <activity
+            android:name="com.ppe.twisterandroid.ActivityClassifica"
+            android:label="@string/title_activity_activity_classifica" >
+        </activity>
     </application>
 
 </manifest>

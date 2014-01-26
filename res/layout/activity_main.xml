@@ -25,4 +25,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@+string/nGiocatori" />
+
+    <Button
+        android:id="@+id/btnClassifica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonGiocatori"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:text="Classifica" />
+
 </RelativeLayout>
